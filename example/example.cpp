@@ -84,8 +84,8 @@ int main()
         SomeData myData;
         myData.id = 5;
         myData.data = std::make_shared<std::unordered_map<uint32_t, MyRecord>>();
-        myData.data->emplace(1, MyRecord{1, 2, 3.0});
-        myData.data->emplace(2, MyRecord{4, 5, 6.1});
+        myData.data->emplace(1, MyRecord{1, 2, 3.0f});
+        myData.data->emplace(2, MyRecord{4, 5, 6.1f});
         std::cout << "myData=" << myData << std::endl;
         archive(myData);
     }
