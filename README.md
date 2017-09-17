@@ -1,4 +1,4 @@
-# cereal-yaml
+# cereal-yaml [![Build Status](https://travis-ci.org/mattcontinisio/cereal-yaml.svg?branch=develop)](https://travis-ci.org/mattcontinisio/cereal-yaml)
 
 YAML archive for [cereal](http://USCiLab.github.com/cereal), powered by [yaml-cpp](https://github.com/jbeder/yaml-cpp).
 
