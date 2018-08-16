@@ -151,7 +151,7 @@ public:
     //! Saves a const char * to the current node
     void saveValue(char const * s)        { emitter << s;   }
     //! Saves a nullptr to the current node
-    void saveValue(std::nullptr_t)        { emitter << nullptr; }
+    void saveValue(std::nullptr_t)        { emitter << YAML::_Null{}; }
 
 private:
     // Some compilers/OS have difficulty disambiguating the above for various flavors of longs, so we provide
@@ -355,6 +355,10 @@ private:
             {
                 currentName = itsItCurrent->first.as<std::string>();
             }
+            else
+            {
+                currentName = "";
+            }
         }
 
         //! Advance to the next node
@@ -484,6 +488,32 @@ public:
     const char* getNodeName() const
     {
         return itsIteratorStack.back().name();
+    }
+
+    //! Retrieves the current node type
+    NodeType getNodeType()
+    {
+        const auto& value = itsIteratorStack.back().value();
+        if (value.IsNull())
+        {
+            return NodeType::Null;
+        }
+        else if (value.IsScalar())
+        {
+            return NodeType::String;
+        }
+        else if (value.IsSequence())
+        {
+            return NodeType::Array;
+        }
+        else if (value.IsMap())
+        {
+            return NodeType::Map;
+        }
+        else
+        {
+            return NodeType::String;
+        }
     }
 
     //! Sets the name for the next node created with startNode
