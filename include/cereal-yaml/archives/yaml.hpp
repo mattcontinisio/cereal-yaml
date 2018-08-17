@@ -355,10 +355,6 @@ private:
             {
                 currentName = itsItCurrent->first.as<std::string>();
             }
-            else
-            {
-                currentName = "";
-            }
         }
 
         //! Advance to the next node
@@ -368,6 +364,10 @@ private:
             if (itsType == Member && itsItCurrent != itsItEnd)
             {
                 currentName = itsItCurrent->first.as<std::string>();
+            }
+            else
+            {
+                currentName = "";
             }
             return *this;
         }
