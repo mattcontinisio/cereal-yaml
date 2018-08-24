@@ -493,6 +493,8 @@ public:
     //! Retrieves the current node type
     NodeType getNodeType()
     {
+        search();
+
         const auto& value = itsIteratorStack.back().value();
         if (value.IsNull())
         {
